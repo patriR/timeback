@@ -22,24 +22,26 @@ class Timeline
     
     private function getOne($id)
     {
-        
+        die("GET one Method not implemented");
     }
     
     public function post($data)
     {
-        FILA 1
+        $mapper = new TimelineMapper();
+        $result = $mapper->insertTimeline($data);
+        return $result;
         die("POST Method not implemented");
     }
     
     public function patch()
     {
-        FILA 2
+        //FILA 2
         die("PATCH Method not implemented");
     }
         
     public function delete($id)
     {
-        FILA 3
+        //FILA 3
         die("DELETE Method not implemented");
     }
     

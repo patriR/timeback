@@ -27,19 +27,19 @@ class Users
     
     public function post($data)
     {
-        FILA 1
+        //FILA 1
         die("POST Method not implemented");
     }
     
     public function patch()
     {
-        FILA 2
+        //FILA 2
         die("PATCH Method not implemented");
     }
         
     public function delete()
     {
-        FILA 3
+        //FILA 3
         die("DELETE Method not implemented");
     }
     
