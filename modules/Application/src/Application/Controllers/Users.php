@@ -1,7 +1,8 @@
 <?php
 namespace Application\controllers;
-use Application\Mappers\Users as UserMapper;
 
+use Core\Application\Application;
+use Application\Mappers\Users as UserMapper;
 use Application\Services;
 
 include_once '../modules/Core/src/Forms/models/validateForm.php';
@@ -33,13 +34,13 @@ class Users
     
     public function index()
     {
+        $id = Application::getRequest()['id'];
         $service = new Services\Users();
-        $data = $service->{strtolower($_SERVER['REQUEST_METHOD'])}();
+        $data = $service->{strtolower($_SERVER['REQUEST_METHOD'])}($id);
         
 //         echo "<pre>Data: ";
 //         print_r($data);
 //         echo "<pre>";
-//         echo "kaka";
 //         die;
         echo json_encode($data);
         
