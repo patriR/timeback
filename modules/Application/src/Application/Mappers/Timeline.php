@@ -27,22 +27,32 @@ class Timeline
     */
     public function fetchAllTimelines()
     {
-        
+        $adapter = new $this->adapterName();
+        if(method_exists($adapter, 'setTable'))
+        {
+            $adapter->setTable('timeline');
+        }
+        return $adapter->fetchAll();
     }
     
     public function fetchTimeline()
     {
-        
+        $adapter = new $this->adapterName();
+        if(method_exists($adapter, 'setTable'))
+        {
+            $adapter->setTable('timeline');
+        }
+        return $adapter->fetch($id);
     }
     
     public function insertTimeline()
     {
-        
+
     }
 
     public function updateTimeline()
     {
-        
+
     }
     
     public function deleteTimeline($id)

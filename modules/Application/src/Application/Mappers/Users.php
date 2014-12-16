@@ -117,14 +117,14 @@ class Users
         }
     }
     
-    public function fetchUser()
+    public function fetchUser($id)
     {
         switch($this->adapterName){
            
             case'\Core\Adapters\Mysql':
                 $adapter = new $this->adapterName();
                 $adapter->setTable("USERS");
-                $users = $adapter->fetch(array('iduser'=> $this->id));
+                $users = $adapter->fetch(array('iduser'=> $id));
                 $adapter->setTable("GENDERS");
                 $genders = $adapter->fetchAll();
                 $adapter->setTable("CITIES");
@@ -180,6 +180,8 @@ class Users
                             }
                         }
                     }
+                    
+                    
                     $userHidrated->hydrate($users[$i]);
                 }
 
@@ -192,6 +194,20 @@ class Users
     public function insertUser()
     {
         
+    }
+    public function updateUser()
+    {
+        
+    }
+    
+    public function deleteUser($id)
+    {
+        $adapter = new $this->adapterName();
+        if(method_exists($adapter, 'setTable'))
+        {
+            $adapter->setTable('users');
+        }
+        return $adapter->delete($id);
     }
 }
 

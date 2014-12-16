@@ -13,10 +13,7 @@ interface MysqlInterface
      * Disconenct from Mysql
      */
     public function disconnect();
-    
-    
-    
+        
     public function setTable($table);
-    public function getTable();
 }
 

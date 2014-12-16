@@ -15,13 +15,17 @@ class Users
             return $users;
         }
         else
-            $this->getOne($id);
+        {
+            $users = $this->getOne($id);
+            return $users;
+        }
     }
     
     private function getOne($id)
     {
-        echo "Hola!!";
-        die;
+        $mapper = new UserMapper();
+        $users = $mapper->fetchUser($id);
+        return $users;
     }
     
     public function post($data)
@@ -36,10 +40,11 @@ class Users
         die("PATCH Method not implemented");
     }
         
-    public function delete()
+    public function delete($id)
     {
-        //FILA 3
-        die("DELETE Method not implemented");
+        $mapper = new UserMapper();
+        $users = $mapper->deleteUser($id);
+        return $users;
     }
     
     public function options()

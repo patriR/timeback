@@ -8,16 +8,14 @@ class Timeline
 {
     public function get($id = null)
     {
-        if(!$id)
-        {
+        if (!$id) {
             $mapper = new TimelineMapper();
             $data = $mapper->fetchAllTimeline();
             return $data;
+        } else {
+            $data = $this->getOne($id);
+            return $data;
         }
-        else
-            $this->getOne($id);
-        
-        die("GET Method not implemented");
     }
     
     private function getOne($id)
@@ -39,8 +37,9 @@ class Timeline
         
     public function delete($id)
     {
-        //FILA 3
-        die("DELETE Method not implemented");
+        $mapper = new TimelineMapper(array('id_timeline' => $id));
+        $timeline = $mapper->delete($id);
+        return $timeline;
     }
     
     public function options()
