@@ -2,7 +2,8 @@
 namespace Application\Mappers;
 
 use Core\Application\Application;
-use Application\Models\EntityTimeline;
+//use Application\Models\EntityTimeline;
+
 
 class Timeline
 {
@@ -31,7 +32,7 @@ class Timeline
         $this->id = $id;
     }
 
-    
+
     public function insertTimeline($data)
     {
         switch($this->adapterName){
@@ -44,7 +45,7 @@ class Timeline
                 
                 return $result;
         }
-        
+
     }
 }
 
