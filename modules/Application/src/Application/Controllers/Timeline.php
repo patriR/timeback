@@ -10,7 +10,7 @@ class Timeline
 {    
     public $layout = null;
     
-    public function index()
+    public function index($id,$params)
     {
         $service = new Services\Timeline();
         $data = $service->{strtolower($_SERVER['REQUEST_METHOD'])}();

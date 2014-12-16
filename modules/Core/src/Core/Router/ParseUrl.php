@@ -5,7 +5,7 @@ use Core\Application\Application;
 
 /**
  * @return array request ( 'controller' =>
- *                         'action' =>
+ *                         'id' =>
  *                         'params' => array( 'param1' => 'value1'
  *                                            'param2' => 'value2'  
  *                                                .............          
@@ -20,7 +20,7 @@ class ParseUrl
         if ($url == '') 
         {
             $controller = Application::getConfig()['default_controller'];
-            $action = Application::getConfig()['default_action'];
+            $action = Application::getConfig()['default_id'];
             $params = [];
            
         } 
@@ -71,7 +71,7 @@ class ParseUrl
         
         return [
             'controller' => $controller,
-            'action' => $action, 
+            'id' => $action, 
             'params' => $params
         ];    
     }

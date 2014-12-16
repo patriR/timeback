@@ -2,10 +2,16 @@
 // Base of Global identities configuration settings on $config variable to redistribute
 $config = array(
 	'database'=>array(
-        'user'=>'username',
-        'password'=>'password',
-        'host'=>'localhost',
-        'database'=>'usuarios'
+		'Users'=>array(
+	        'user'=>'username',
+	        'password'=>'password',
+	        'host'=>'localhost',
+	        'database'=>'usuarios'),
+	     'Timeline'=>array(
+	        'user'=>'username',
+	        'password'=>'password',
+	        'host'=>'localhost',
+	        'database'=>'timeline')
     ),
     'repository'=>'db|txt|gd',
     'layout'=>'dashboard'

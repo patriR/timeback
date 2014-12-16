@@ -10,6 +10,6 @@ $config = array(
     'repository'=>'db|txt|gd',
     'layout'=>'dashboard',
     'filename'=> 'usuarios.txt',
-    'default_controller'=>'index',
-    'default_action'=>'index'
+    'default_controller'=>'Timeline',
+    'default_id'=>''
 );

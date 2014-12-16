@@ -37,11 +37,13 @@ class Application
         
             $controllerName = "Application\\Controllers\\".self::$request['controller'];
             $controller = new $controllerName(self::$request['controller']);
-            $actionName = self::$request['action'];
+            $actionName = 'index';
+            $id = self::$request['id'];
+            $params = self::$request['params'];
             
             if(method_exists($controllerName, $actionName))
             {
-               $controller -> $actionName(); 
+               $controller -> $actionName($id,$params); 
             } 
             else 
             {

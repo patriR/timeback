@@ -193,5 +193,10 @@ class Users
     {
         
     }
+    
+    public function updateUser()
+    {
+    
+    }
 }
 
