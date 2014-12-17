@@ -5,15 +5,8 @@ use Core\Application\Application;
 
 /**
  * @return array request ( 'controller' =>
-<<<<<<< HEAD
- *                         'id' =>
- *                         'params' => array( 'param1' => 'value1'
- *                                            'param2' => 'value2'  
- *                                                .............          
-=======
  *                         'action' =>
  *                         'id' => );         
->>>>>>> 633618991def07fd2fbed7ac34fb3fa3d9697765
  */
 class ParseUrl
 {
@@ -25,18 +18,13 @@ class ParseUrl
         if ($url == '') 
         {
             $controller = Application::getConfig()['default_controller'];
-<<<<<<< HEAD
-            $action = Application::getConfig()['default_id'];
-            $params = [];
-=======
             $action = Application::getConfig()['default_action'];
             $id = null;
->>>>>>> 633618991def07fd2fbed7ac34fb3fa3d9697765
            
         } 
         else 
         {
-            if(count($parts) >= 2)
+            if(count($parts) <= 2)
             {
                 $controller = $parts[0];
                 $controller_file = $_SERVER['DOCUMENT_ROOT']."/../Modules/Application/Src/Application/Controllers/$controller.php";
@@ -74,13 +62,9 @@ class ParseUrl
          
         return [
             'controller' => $controller,
-<<<<<<< HEAD
-            'id' => $action, 
-            'params' => $params
-=======
             'action' => $action, 
             'id' => $id
->>>>>>> 633618991def07fd2fbed7ac34fb3fa3d9697765
+           
         ];    
     }
 }

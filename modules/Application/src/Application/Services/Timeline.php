@@ -2,54 +2,69 @@
 namespace Application\Services;
 
 use Application\Mappers\Timeline as TimelineMapper;
+/**
+ * TODO No me reconoce el TimelineMapper
+ */
 
 class Timeline
 {
-    public function get($id = null)
+    public function get($id=null)
     {
-        if (!$id) {
+        if(!$id)
+        {
             $mapper = new TimelineMapper();
             $data = $mapper->fetchAllTimeline();
-            return $data;
-        } else {
+        }        
+        else
             $data = $this->getOne($id);
-            return $data;
-        }
+        return $data;
+      
     }
     
     private function getOne($id)
     {
-        die("GET one Method not implemented");
+        $mapper = new TimelineMapper();
+        $mapper->setId($id);
+        $data = $mapper->fetchTimeline();
+        return json_encode($data);
     }
     
     public function post($data)
     {
-
-        $mapper = new TimelineMapper();
-        $result = $mapper->insertTimeline($data);
-        return $result;
-
+    	$mapper = new TimelineMapper();
+    	//FILA 1
+    	$mapper->setId($id);
+        $ok = $mapper->insertTimeline($data);
+        if (!$ok)
+        	die("POST Method failure");
     }
     
-    public function patch($id,$data)
+    /**
+     * @param unknown_type $id
+     * @param array $data
+     */
+    public function patch($id)
     {
-
-        if($id)
-        {
-            $mapper = new TimelineMapper();
-            $result = $mapper->updateTimeline($id,$data);
-            return $result;
-        }
-        else
-            die("PATCH Method not implemented");
+        //Tomar $data del post
+        if($_POST)
+            $data=$_POST;
+        echo print_r($_POST);
+    	$mapper = new TimelineMapper();
+        $mapper->setId($id);
+        $ok = $mapper->updateTimeline($data);
+        if (!$ok)
+        	die("POST Method failure");
 
     }
         
     public function delete($id)
     {
-        $mapper = new TimelineMapper(array('id_timeline' => $id));
-        $timeline = $mapper->delete($id);
-        return $timeline;
+    	$mapper = new TimelineMapper();
+    	//FILA 3
+        $mapper->setId($id);
+        $ok = $mapper->deleteTimeline();
+        if (!$ok)
+        	die("POST Method failure");
     }
     
     public function options()
@@ -61,6 +76,5 @@ class Timeline
     {
         die("PUT Method not implemented");
     }
-    
     
 }

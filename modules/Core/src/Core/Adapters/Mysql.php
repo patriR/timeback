@@ -6,13 +6,13 @@ class Mysql implements AdapterInterface, MysqlInterface
 {
     private $link;
     protected $table;
-    public $controller;
+    //public $controller;
     
-    public function __construct($control)
+    public function __construct()
     {
         $config = Application::getConfig();
         $this->connect($config);
-        $this->controller = $control;
+        //$this->controller = $control;
     }
   
     /**
@@ -22,12 +22,9 @@ class Mysql implements AdapterInterface, MysqlInterface
      */
     public function connect($config)
     {
-        if (!isset($this->controller)) $this->controller = 'Timeline';
+        //if (!isset($this->controller)) $this->controller = 'Timeline';
         // Conectarse al DBMS
-        echo '<pre>';
-        print_r($config['database']);
-        echo '</pre>';
-         $config_controller = $config['database'][$this->controller];
+       $config_controller = $config['database'];//[$this->controller];
         
         // Conectarse al DBMS
         $this->link = mysqli_connect($config['database']['host'],
@@ -61,7 +58,7 @@ class Mysql implements AdapterInterface, MysqlInterface
     {
         // SELECT * FROM users;
         $sql = "SELECT * FROM ".$this->table;
-        
+       
         // Retornar el data
         $result = mysqli_query($this->link, $sql);
         $rows=array();
@@ -92,7 +89,6 @@ class Mysql implements AdapterInterface, MysqlInterface
         {
             $rows[] = $row;
         }
-        
         return $rows;
         
     }
