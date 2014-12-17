@@ -15,32 +15,36 @@ class Users
             return $users;
         }
         else
-            $this->getOne($id);
-        
-        die("GET Method not implemented");
+        {
+            $users = $this->getOne($id);
+            return $users;
+        }
     }
     
     private function getOne($id)
     {
-        
+        $mapper = new UserMapper();
+        $users = $mapper->fetchUser($id);
+        return $users;
     }
     
     public function post($data)
     {
-        FILA 1
+        //FILA 1
         die("POST Method not implemented");
     }
     
     public function patch()
     {
-        FILA 2
+        //FILA 2
         die("PATCH Method not implemented");
     }
         
-    public function delete()
+    public function delete($id)
     {
-        FILA 3
-        die("DELETE Method not implemented");
+        $mapper = new UserMapper();
+        $users = $mapper->deleteUser($id);
+        return $users;
     }
     
     public function options()
