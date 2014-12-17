@@ -3,93 +3,141 @@ namespace Application\Models;
 
 use Core\Entity\HydrateInterface;
 
-class EntityUser implements HydrateInterface
+
+class EntityTimeline implements HydrateInterface
 {
     private $id;
-    protected $start_date;
-    protected $end_date;
-    private $headline;
+    protected $startdate;
+    protected $enddate;
+    protected $headline;
     protected $text;
-    public $media;
-    public $media_credit;
-    public $media_caption;
-    public $media_thumbnail;
-    public $type;
-    public $tags;
-
-    public function setId($id) {
+    protected $media;
+    protected $mediacredit;
+    protected $mediacaption;
+    protected $mediathumbnail;
+    protected $type;
+    protected $tag;
+    
+    /**
+     * @param field_type $id
+     */
+    public function setId($id)
+    {
         $this->id = $id;
     }
 
-    public function setStartDate($start_date) {
-        $this->start_date = $start_date;
+    /**
+     * @param field_type $startdate
+     */
+    public function setStartdate($startdate)
+    {
+        $this->startdate = $startdate;
     }
 
-    public function setEndDate($end_date) {
-        $this->end_date = $end_date;
+    /**
+     * @param field_type $enddate
+     */
+    public function setEnddate($enddate)
+    {
+        $this->enddate = $enddate;
     }
-    
-    public function setHeadline($headline) {
+
+    /**
+     * @param field_type $headline
+     */
+    public function setHeadline($headline)
+    {
         $this->headline = $headline;
     }
 
-    public function setText($text) {
+    /**
+     * @param field_type $text
+     */
+    public function setText($text)
+    {
         $this->text = $text;
     }
 
-    public function setMedia($media) {
+    /**
+     * @param field_type $media
+     */
+    public function setMedia($media)
+    {
         $this->media = $media;
     }
 
-    public function setMediaCredit($mediacredit) {
-        $this->media_credit = $mediacredit;
+    /**
+     * @param field_type $mediacredit
+     */
+    public function setMediacredit($mediacredit)
+    {
+        $this->mediacredit = $mediacredit;
     }
 
-    public function setMediaCaption($mediacaption) {
-        $this->media_caption = $mediacaption;
+    /**
+     * @param field_type $mediacaption
+     */
+    public function setMediacaption($mediacaption)
+    {
+        $this->mediacaption = $mediacaption;
     }
 
-    public function setMediaThumbnail($mediathumbnail) {
-        $this->media_thumbnail = $mediathumbnail;
+    /**
+     * @param field_type $mediathumbnail
+     */
+    public function setMediathumbnail($mediathumbnail)
+    {
+        $this->mediathumbnail = $mediathumbnail;
     }
 
-    public function setType($type) {
+    /**
+     * @param field_type $type
+     */
+    public function setType($type)
+    {
         $this->type = $type;
     }
 
-    public function setTags($tags) {
-        $this->tags = $tags;
+    /**
+     * @param field_type $tag
+     */
+    public function setTag($tag)
+    {
+        $this->tag = $tag;
     }
 
+    
     public function hydrate($data)
     {
         $this->setId($data['id_timeline']);
-        $this->setStartDate($data['start_date']);
-        $this->setEndDate($data['end_date']) ;
+        $this->setStartdate($data['start_date']);
+        $this->setEnddate($data['end_date']);
         $this->setHeadline($data['headline']);
         $this->setText($data['text']);
         $this->setMedia($data['media']);
-        $this->setMediaCredit($data['media_credit']);
-        $this->setMediaCaption($data['media_caption']);
-        $this->setMediaThumbnail($data['media_thumbnail']);
+        $this->setMediacredit($data['media_credit']);
+        $this->setMediacaption($data['media_caption']);
+        $this->setMediathumbnail($data['media_thumbnail']);
         $this->setType($data['type']);
-        $this->setTags($data['tags']);
+        $this->setTag($data['tag_id_tag']);
     }
 
+    
     public function extract()
     {
         $timeline = array(
             'id' => $this->id,
-            'start_date' => $this->start_date,
-            'end_date' => $this->end_date,
+            'startdate' => $this->startdate,
+            'enddate' => $this->enddate,
             'headline' => $this->headline,
             'text' => $this->text,
             'media' => $this->media,
-            'media_credit' => $this->media_credit,
-            'media_caption' => $this->media_caption,
-            'media_thumbnail' => $this->media_thumbnail,
+            'mediacredit' => $this->mediacredit,
+            'mediacaption'=> $this->mediacaption,
+            'mediathumbnail' => $this->mediathumbnail,
             'type' => $this->type,
-            'tags' => $this->tags
+            'tag' => $this->tag
+
         );
         return $timeline;
     }

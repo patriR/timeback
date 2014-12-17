@@ -44,14 +44,6 @@ class Mysql implements AdapterInterface, MysqlInterface
     {
         mysqli_close($this->link);
     }
-    
-    /**
-     * @return the $table
-     */
-    public function getTable()
-    {
-        return $this->table;
-    }
 
     /**
      * @param field_type $table
@@ -87,9 +79,11 @@ class Mysql implements AdapterInterface, MysqlInterface
      */
     public function fetch($id)
     {
+               
         $sql = "SELECT * 
                 FROM ".$this->table." 
                 WHERE ".key($id)."='".$id[key($id)]."'";
+  
         // Retornar el data
         $result = mysqli_query($this->link, $sql);
         //$row = mysqli_fetch_assoc($result);

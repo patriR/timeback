@@ -12,8 +12,9 @@ class Timeline
     
     public function index($id,$params)
     {
+        $id = Application::getRequest()['id'];
         $service = new Services\Timeline();
-        $data = $service->{strtolower($_SERVER['REQUEST_METHOD'])}();
+        $data = $service->{strtolower($_SERVER['REQUEST_METHOD'])}($id);
 
         echo json_encode($data);        
     }

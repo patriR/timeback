@@ -2,7 +2,10 @@
 namespace Application\Mappers;
 
 use Core\Application\Application;
-use Application\Models\EntityUser;
+
+use Application\Models\EntityTimeline;
+
+
 
 class Timeline
 {
@@ -19,6 +22,7 @@ class Timeline
         $this->setAdapterName($config['adapter']);
         if(isset($request['params']['id']))
             $this->setId($request['params']['id']);
+
     }
 
     public function setAdapterName($adapterName)
@@ -108,11 +112,7 @@ class Timeline
         }
     }
 
-    public function insertTimeline()
-    {
-
-    }
-    
+   
     public function updateTimeline($id, $data)
     {
         switch($this->adapterName){
@@ -128,6 +128,31 @@ class Timeline
                 $adapter->disconnect();
         
                 return $result();
+       }
+    }
+                                
+    public function deleteTimeline($id)
+    {
+        $adapter = new $this->adapterName();
+        if(method_exists($adapter, 'setTable'))
+        {
+            $adapter->setTable('timeline');
+        }
+        return $adapter->delete($id);
+    }
+    
+
+    public function insertTimeline($data)
+    {
+        switch($this->adapterName){
+            case'\Core\Adapters\Mysql':
+                $adapter = new $this->adapterName();
+                $adapter->setTable("TIMELINE");
+                $result = $adapter->insert($data);
+                            
+                $adapter->disconnect();
+                
+                return $result;
         }
     }
 }
