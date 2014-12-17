@@ -53,7 +53,7 @@ class Mysql implements AdapterInterface, MysqlInterface
     {
         // SELECT * FROM users;
         $sql = "SELECT * FROM ".$this->table;
-        
+       
         // Retornar el data
         $result = mysqli_query($this->link, $sql);
         
@@ -76,6 +76,7 @@ class Mysql implements AdapterInterface, MysqlInterface
                 FROM ".$this->table." 
                 WHERE ".key($id)."='".$id[key($id)]."'";
   
+        
         // Retornar el data
         $result = mysqli_query($this->link, $sql);
         //$row = mysqli_fetch_assoc($result);
