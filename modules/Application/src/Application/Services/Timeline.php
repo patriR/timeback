@@ -1,7 +1,6 @@
 <?php
 namespace Application\Services;
 
-
 use Application\Mappers\Timeline as TimelineMapper;
 
 class Timeline
@@ -20,13 +19,14 @@ class Timeline
     
     private function getOne($id)
     {
-        
+        die("GET one Method not implemented");
     }
     
     public function post($data)
     {
-        //FILA 1
-        die("POST Method not implemented");
+        $mapper = new TimelineMapper();
+        $result = $mapper->insertTimeline($data);
+        return $result;
     }
     
     public function patch()
