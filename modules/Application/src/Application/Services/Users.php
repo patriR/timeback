@@ -30,34 +30,23 @@ class Users
     
     public function post($data)
     {
-<<<<<<< HEAD
-        
-=======
-        //FILA 1
->>>>>>> 633618991def07fd2fbed7ac34fb3fa3d9697765
+
         die("POST Method not implemented");
     }
     
     public function patch()
     {
-<<<<<<< HEAD
-        
-=======
-        //FILA 2
->>>>>>> 633618991def07fd2fbed7ac34fb3fa3d9697765
+
         die("PATCH Method not implemented");
     }
         
     public function delete($id)
     {
-<<<<<<< HEAD
-        
-        die("DELETE Method not implemented");
-=======
+
         $mapper = new UserMapper();
         $users = $mapper->deleteUser($id);
         return $users;
->>>>>>> 633618991def07fd2fbed7ac34fb3fa3d9697765
+
     }
     
     public function options()

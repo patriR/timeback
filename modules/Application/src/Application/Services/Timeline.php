@@ -24,19 +24,16 @@ class Timeline
     
     public function post($data)
     {
-<<<<<<< HEAD
-        
-        die("POST Method not implemented");
-=======
+
         $mapper = new TimelineMapper();
         $result = $mapper->insertTimeline($data);
         return $result;
->>>>>>> 633618991def07fd2fbed7ac34fb3fa3d9697765
+
     }
     
     public function patch($id,$data)
     {
-<<<<<<< HEAD
+
         if($id)
         {
             $mapper = new TimelineMapper();
@@ -45,22 +42,14 @@ class Timeline
         }
         else
             die("PATCH Method not implemented");
-=======
-        //FILA 2
-        die("PATCH Method not implemented");
->>>>>>> 633618991def07fd2fbed7ac34fb3fa3d9697765
+
     }
         
     public function delete($id)
     {
-<<<<<<< HEAD
-       
-        die("DELETE Method not implemented");
-=======
         $mapper = new TimelineMapper(array('id_timeline' => $id));
         $timeline = $mapper->delete($id);
         return $timeline;
->>>>>>> 633618991def07fd2fbed7ac34fb3fa3d9697765
     }
     
     public function options()
